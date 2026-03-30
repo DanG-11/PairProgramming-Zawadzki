@@ -28,6 +28,8 @@ namespace PairProgramming_Zawadzki
 
             Label fellaLabel = new Label();
             fellaLabel.Content = "Ziutek";
+            fellaLabel.Width = Double.NaN;
+            fellaLabel.Height = Double.NaN;
             Grid.SetColumn(fellaLabel, fellaPos[0]);
             Grid.SetRow(fellaLabel, fellaPos[1]);
 
