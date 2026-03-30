@@ -28,8 +28,8 @@ namespace PairProgramming_Zawadzki
 
             Label fellaLabel = new Label();
             fellaLabel.Content = "Ziutek";
-            Grid.SetRow(fellaLabel, fellaPos[0]);
-            Grid.SetColumn(fellaLabel, fellaPos[1]);
+            Grid.SetColumn(fellaLabel, fellaPos[0]);
+            Grid.SetRow(fellaLabel, fellaPos[1]);
 
             GameBoardGrid.Children.Add(fellaLabel);
         }
@@ -40,23 +40,35 @@ namespace PairProgramming_Zawadzki
 
             if (key == "Up")
             {
-                fellaPos[0]--;
-                DisplayBoard();
+                if (fellaPos[1] != 0 /*&& gameBoard[fellaPos[0], fellaPos[1] - 1] != 0 */)
+                {
+                    fellaPos[1]--;
+                    DisplayBoard();
+                }
             }
             else if (key == "Down")
             {
-                fellaPos[0]++;
-                DisplayBoard();
+                if (fellaPos[1] != 9 /*&& gameBoard[fellaPos[0], fellaPos[1] + 1] != 0 */)
+                {
+                    fellaPos[1]++;
+                    DisplayBoard();
+                }
             }
             else if (key == "Left")
             {
-                fellaPos[1]--;
-                DisplayBoard();
+                if (fellaPos[0] != 0 /*&& gameBoard[fellaPos[0] - 1, fellaPos[1]] != 0 */)
+                {
+                    fellaPos[0]--;
+                    DisplayBoard();
+                }
             }
             else if (key == "Right")
             {
-                fellaPos[1]++;
-                DisplayBoard();
+                if (fellaPos[0] != 9 /*&& gameBoard[fellaPos[0] + 1, fellaPos[1]] != 0 */)
+                {
+                    fellaPos[0]++;
+                    DisplayBoard();
+                }
             }
         }
     }
