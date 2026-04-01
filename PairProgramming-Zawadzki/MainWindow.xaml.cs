@@ -29,18 +29,11 @@ namespace PairProgramming_Zawadzki
         private void InitalizeGameBoard()
         {
             //Ściany
-            for (int i = 0; i < 40; i++)
+            for (int i = 0; i < 10; i++)
             {
-                int randX = random.Next(0, 10);
-                int randY = random.Next(0, 10);
-
-                if (gameBoard[randX, randY] == 0)
+                for(int j = 0; j < 10; j++)
                 {
-                    gameBoard[randX, randY] = 1;
-                }
-                else
-                {
-                    i--;
+                    gameBoard[i, j] = 1;
                 }
             }
 
