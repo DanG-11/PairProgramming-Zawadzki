@@ -80,8 +80,11 @@ namespace PairProgramming_Zawadzki
 
             Label fellaLabel = new Label();
             fellaLabel.Content = "Ziutek";
+            fellaLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+            fellaLabel.VerticalContentAlignment = VerticalAlignment.Center; 
             fellaLabel.Width = Double.NaN;
             fellaLabel.Height = Double.NaN;
+            fellaLabel.Background = Brushes.LightBlue;
             Grid.SetColumn(fellaLabel, fellaPos[0]);
             Grid.SetRow(fellaLabel, fellaPos[1]);
 
@@ -100,6 +103,8 @@ namespace PairProgramming_Zawadzki
                             wallLabel.Content = "Ściana";
                             wallLabel.Width = Double.NaN;
                             wallLabel.Height = Double.NaN;
+                            wallLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+                            wallLabel.VerticalContentAlignment = VerticalAlignment.Center;
                             wallLabel.Background = Brushes.Black;
                             Grid.SetColumn(wallLabel, i);
                             Grid.SetRow(wallLabel, j);
@@ -110,6 +115,8 @@ namespace PairProgramming_Zawadzki
                             eggLabel.Content = "Jajko";
                             eggLabel.Width = Double.NaN;
                             eggLabel.Height = Double.NaN;
+                            eggLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+                            eggLabel.VerticalContentAlignment = VerticalAlignment.Center;
                             Grid.SetColumn(eggLabel, i);
                             Grid.SetRow(eggLabel, j);
                             GameBoardGrid.Children.Add(eggLabel);
