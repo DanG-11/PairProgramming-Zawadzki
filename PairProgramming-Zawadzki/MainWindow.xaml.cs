@@ -87,36 +87,34 @@ namespace PairProgramming_Zawadzki
 
             GameBoardGrid.Children.Add(fellaLabel);
 
-            Label[] easterEggLabel = new Label[10];
 
-            for (int i = 0; i < 10; i++)
+
+            for(int i = 0; i < 10; i++)
             {
-                if (gameBoard[easterEggPos[i].x, easterEggPos[i].y] == 2)
+                for(int j = 0; j < 10; j++)
                 {
-                    easterEggLabel[i] = new Label();
-                    easterEggLabel[i].Content = $"Easter Egg{i + 1}";
-                    easterEggLabel[i].Width = Double.NaN;
-                    easterEggLabel[i].Height = Double.NaN;
-                    Grid.SetColumn(easterEggLabel[i], easterEggPos[i].x);
-                    Grid.SetRow(easterEggLabel[i], easterEggPos[i].y);
-
-                    GameBoardGrid.Children.Add(easterEggLabel[i]);
+                    switch(gameBoard[i, j])
+                    {
+                        case 1:
+                            Label wallLabel = new Label();
+                            wallLabel.Content = "Ściana";
+                            wallLabel.Width = Double.NaN;
+                            wallLabel.Height = Double.NaN;
+                            Grid.SetColumn(wallLabel, i);
+                            Grid.SetRow(wallLabel, j);
+                            GameBoardGrid.Children.Add(wallLabel);
+                            break;
+                        case 2:
+                            Label eggLabel = new Label();
+                            eggLabel.Content = "Jajko";
+                            eggLabel.Width = Double.NaN;
+                            eggLabel.Height = Double.NaN;
+                            Grid.SetColumn(eggLabel, i);
+                            Grid.SetRow(eggLabel, j);
+                            GameBoardGrid.Children.Add(eggLabel);
+                            break;
+                    }
                 }
-            }
-
-            Label[] wallLabel = new Label[40];
-
-            for(int i = 0; i < 40; i++)
-            {
-                wallLabel[i] = new Label();
-                wallLabel[i].Content = $"Wall{i+1}";
-                wallLabel[i].Width = Double.NaN;
-                wallLabel[i].Height = Double.NaN;
-                wallLabel[i].Background = Brushes.Black;
-                Grid.SetColumn(wallLabel[i], wallPos[i].x);
-                Grid.SetRow(wallLabel[i], wallPos[i].y);
-
-                GameBoardGrid.Children.Add(wallLabel[i]);
             }
         }
 
