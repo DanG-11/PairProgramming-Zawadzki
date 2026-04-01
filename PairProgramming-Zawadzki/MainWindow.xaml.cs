@@ -15,82 +15,63 @@ namespace PairProgramming_Zawadzki
     {
         int collectedEggs = 0;
 
-        Random fellaRandPos1 = new Random();
-        Random fellaRandPos2 = new Random();
+        Random random = new Random();
 
-        int[,] gameBoard = new int[10, 10];
+        int[,] gameBoard = new int[10, 10]; // 0 - puste pole, 1 - ściana, 2 - jajko
         int[] fellaPos = new int[] { };
-        (int x, int y)[] easterEggPos = new (int, int)[10];
-        (int x, int y)[] wallPos = new (int, int)[40];
+
         public MainWindow()
         {
             InitializeComponent();
-            fellaPos = new int[] { fellaRandPos1.Next(0, 10), fellaRandPos2.Next(0, 10) };
-            InitalizeEasterBoard();
-            DisplayBoard();
+            InitalizeGameBoard();
         }
 
-        private void InitalizeEasterBoard()
+        private void InitalizeGameBoard()
         {
-            Random easterEggRand = new Random();
-            Random wallRand = new Random();
-
-            // 1️⃣ Generacja ścian
+            //Ściany
             for (int i = 0; i < 40; i++)
             {
-                (int x, int y) pos;
-                do
+                int randX = random.Next(0, 10);
+                int randY = random.Next(0, 10);
+
+                if (gameBoard[randX, randY] == 0)
                 {
-                    pos = (wallRand.Next(0, 10), wallRand.Next(0, 10));
+                    gameBoard[randX, randY] = 1;
                 }
-                while (IsOccupied(pos, "wall")); // powtarzaj jeśli zajęte
-
-                wallPos[i] = pos;
-
-                gameBoard[pos.x, pos.y] = 1;
+                else
+                {
+                    i--;
+                }
             }
 
-            // 2️⃣ Generacja jajek
+            //Jajca
             for (int i = 0; i < 10; i++)
             {
-                (int x, int y) pos;
-                do
+                int randX = random.Next(0, 10);
+                int randY = random.Next(0, 10);
+                if (gameBoard[randX, randY] == 0)
                 {
-                    pos = (easterEggRand.Next(0, 10), easterEggRand.Next(0, 10));
+                    gameBoard[randX, randY] = 2;
                 }
-                while (IsOccupied(pos, "egg")); // powtarzaj jeśli zajęte
-
-                easterEggPos[i] = pos;
-
-                gameBoard[pos.x, pos.y] = 2;
+                else
+                {
+                    i--;
+                }
             }
-        }
 
-        // 🔹 Funkcja sprawdzająca kolizję
-        private bool IsOccupied((int x, int y) pos, string type)
-        {
-            // sprawdzanie ścian
-            for (int w = 0; w < 40; w++)
+            //Ziutek
+            while (true)
             {
-                if (wallPos[w] == pos)
+                int randX = random.Next(0, 10);
+                int randY = random.Next(0, 10);
+                if (gameBoard[randX, randY] == 0)
                 {
-                    if (type == "wall" || type == "egg") return true;
+                    fellaPos = new int[] { randX, randY };
+                    break;
                 }
             }
 
-            // sprawdzanie jajek
-            for (int e = 0; e < 10; e++)
-            {
-                if (easterEggPos[e] == pos)
-                {
-                    if (type == "egg" || type == "wall") return true;
-                }
-            }
-
-            // sprawdzanie gracza (tylko dla jajek)
-            if (type == "egg" && pos == (fellaPos[0], fellaPos[1])) return true;
-
-            return false;
+            DisplayBoard();
         }
 
         private void DisplayBoard()
