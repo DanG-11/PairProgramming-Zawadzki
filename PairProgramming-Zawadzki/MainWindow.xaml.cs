@@ -100,6 +100,7 @@ namespace PairProgramming_Zawadzki
                             wallLabel.Content = "Ściana";
                             wallLabel.Width = Double.NaN;
                             wallLabel.Height = Double.NaN;
+                            wallLabel.Background = Brushes.Black;
                             Grid.SetColumn(wallLabel, i);
                             Grid.SetRow(wallLabel, j);
                             GameBoardGrid.Children.Add(wallLabel);
@@ -144,6 +145,7 @@ namespace PairProgramming_Zawadzki
             {
                 gameBoard[newX, newY] = 0; // usuń jajko
                 collectedEggs++;           // zwiększ licznik
+                ScoreLabel.Content = $"Zebrane jajka: {collectedEggs}"; // aktualizuj wyświetlanie wyniku
 
                 // ✅ Sprawdzenie wygranej
                 if (collectedEggs == 10)
