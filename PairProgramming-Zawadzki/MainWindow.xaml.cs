@@ -95,10 +95,8 @@ namespace PairProgramming_Zawadzki
 
         private void DisplayBoard()
         {
-            // Clear the grid before displaying the new positions
             GameBoardGrid.Children.Clear();
 
-            // Fella
             Label fellaLabel = new Label();
             fellaLabel.Content = "Ziutek";
             fellaLabel.Width = Double.NaN;
@@ -106,16 +104,12 @@ namespace PairProgramming_Zawadzki
             Grid.SetColumn(fellaLabel, fellaPos[0]);
             Grid.SetRow(fellaLabel, fellaPos[1]);
 
-            // Add the fella label to the grid
             GameBoardGrid.Children.Add(fellaLabel);
 
-
-            // Easter Eggs
             Label[] easterEggLabel = new Label[10];
 
             for (int i = 0; i < 10; i++)
             {
-                // rysujemy jajko tylko jeśli w gameBoard jest 2
                 if (gameBoard[easterEggPos[i].x, easterEggPos[i].y] == 2)
                 {
                     easterEggLabel[i] = new Label();
@@ -129,13 +123,10 @@ namespace PairProgramming_Zawadzki
                 }
             }
 
-            // Walls
             Label[] wallLabel = new Label[40];
 
-            // Loop through the wall positions and create labels for each one
             for(int i = 0; i < 40; i++)
             {
-                // Create a label for the wall
                 wallLabel[i] = new Label();
                 wallLabel[i].Content = $"Wall{i+1}";
                 wallLabel[i].Width = Double.NaN;
@@ -144,7 +135,6 @@ namespace PairProgramming_Zawadzki
                 Grid.SetColumn(wallLabel[i], wallPos[i].x);
                 Grid.SetRow(wallLabel[i], wallPos[i].y);
 
-                // Add the wall label to the grid
                 GameBoardGrid.Children.Add(wallLabel[i]);
             }
         }
