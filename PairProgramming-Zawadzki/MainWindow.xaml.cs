@@ -117,6 +117,7 @@ namespace PairProgramming_Zawadzki
                             eggLabel.Height = Double.NaN;
                             eggLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
                             eggLabel.VerticalContentAlignment = VerticalAlignment.Center;
+                            eggLabel.Background = Brushes.LightYellow;
                             Grid.SetColumn(eggLabel, i);
                             Grid.SetRow(eggLabel, j);
                             GameBoardGrid.Children.Add(eggLabel);
